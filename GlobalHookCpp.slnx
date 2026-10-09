@@ -1,0 +1,10 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="GlobalHookCpp/GlobalHookCpp.vcxproj" />
+  <Project Path="MultiStepLauncher/MultiStepLauncher.csproj" />
+  <Project Path="WindowsProject1/WindowsProject1.vcxproj" />
+</Solution>

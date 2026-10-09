@@ -1,0 +1,67 @@
+﻿<Window x:Class="MultiStepLauncher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MultiStepLauncher"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        Style="{DynamicResource  DefaultWindowStyle}"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowState="Maximized"
+        ResizeMode="NoResize"
+        Loaded="Window_Loaded"
+        >
+    <Window.Resources>
+        <System:Double x:Key="CaptionHeight">52</System:Double>
+        <Style TargetType="{x:Type Window}" x:Key="DefaultWindowStyle">
+            <Setter Property="WindowChrome.WindowChrome">
+                <Setter.Value>
+                    <WindowChrome CornerRadius="3" GlassFrameThickness="0" ResizeBorderThickness="0" UseAeroCaptionButtons="False" CaptionHeight="{DynamicResource CaptionHeight}" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="UseLayoutRounding" Value="True"/>
+            <Setter Property="Background" Value="#FF494949"/>
+            <!-- 背景の色：灰色 -->
+            <Setter Property="BorderBrush" Value="#FF14A9FF"/>
+            <!-- 枠線の色：青色 -->
+            <Setter Property="BorderThickness" Value="0"/>
+            <!-- 枠線 -->
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+                
+        <Button x:Name="Button_LauncherFirst" Grid.Row="0" Grid.Column="2" Content="Open Launcher 1" Click="Button_Click" FontSize="35" Margin="5"
+                PreviewMouseLeftButtonDown="Button_LauncherFirst_PreviewMouseLeftButtonDown"
+                PreviewMouseMove="Button_LauncherFirst_PreviewMouseMove"
+                PreviewMouseLeftButtonUp="Button_LauncherFirst_PreviewMouseLeftButtonUp"
+                LostMouseCapture="Button_LauncherFirst_LostMouseCapture"/>
+
+        <Button x:Name="Button_LauncherSecond" Grid.Row="5" Grid.Column="2" Content="Open Launcher 2"  Click="Button_Click_1" FontSize="35" Margin="10"/>
+
+        <Button x:Name="Button_Launcher1" Grid.Row="0" Grid.Column="5" Content="メモ帳" Click="Button_Launcher1_Click" FontSize="35" Margin="10"/>
+        <Button x:Name="Button_Launcher2" Grid.Row="1" Grid.Column="5" Content="電卓" Click="Button_Launcher2_Click" FontSize="35" Margin="10"/>
+        <Button x:Name="Button_Launcher3" Grid.Row="2" Grid.Column="5" Content="ペイント" Click="Button_Launcher3_Click" FontSize="35" Margin="10"/>
+        <Button x:Name="Button_Launcher4" Grid.Row="3" Grid.Column="5" Content="Windows設定" Click="Button_Launcher4_Click" FontSize="35" Margin="10"/>
+        <Button x:Name="Button_Launcher5" Grid.Row="4" Grid.Column="5" Content="Empty" Click="Button_Launcher5_Click" FontSize="35" Margin="10"/>
+    </Grid>
+</Window>
