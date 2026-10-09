@@ -4,7 +4,7 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="GlobalHookCpp/GlobalHookCpp.vcxproj" />
+  <Project Path="GlobalHookCpp/GlobalHookCpp.vcxproj" Id="05519b45-48de-475a-b949-4bf2715eff48" />
   <Project Path="MultiStepLauncher/MultiStepLauncher.csproj" />
-  <Project Path="WindowsProject1/WindowsProject1.vcxproj" />
+  <Project Path="WindowsProject1/WindowsProject1.vcxproj" Id="a861ab89-dcc4-48d6-a8e3-562591dd3484" />
 </Solution>

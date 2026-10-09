@@ -34,6 +34,18 @@
             <Setter Property="Foreground" Value="White"/>
         </Style>
     </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded" SourceName="Button_LauncherFirst">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ColorAnimation Storyboard.TargetName="Button_LauncherFirst"
+                                    Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                    From="#FFDDDDDD" To="#FF14A9FF" Duration="0:0:1.2"
+                                    AutoReverse="True" RepeatBehavior="Forever"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -54,7 +66,11 @@
                 PreviewMouseLeftButtonDown="Button_LauncherFirst_PreviewMouseLeftButtonDown"
                 PreviewMouseMove="Button_LauncherFirst_PreviewMouseMove"
                 PreviewMouseLeftButtonUp="Button_LauncherFirst_PreviewMouseLeftButtonUp"
-                LostMouseCapture="Button_LauncherFirst_LostMouseCapture"/>
+                LostMouseCapture="Button_LauncherFirst_LostMouseCapture">
+            <Button.Background>
+                <SolidColorBrush Color="#FFDDDDDD"/>
+            </Button.Background>
+        </Button>
 
         <Button x:Name="Button_LauncherSecond" Grid.Row="5" Grid.Column="2" Content="Open Launcher 2"  Click="Button_Click_1" FontSize="35" Margin="10"/>
 
