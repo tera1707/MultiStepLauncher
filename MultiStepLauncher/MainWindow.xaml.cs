@@ -23,7 +23,8 @@ public partial class MainWindow : Window
     DispatcherTimer dt = new();
 
     private Point? _launcherFirstDragStart;
-    private const double SwipeThreshold = 200;
+    private bool _launcherFirstWasDragged;
+    private const double DragThreshold = 4;
 
     public MainWindow()
     {
@@ -71,6 +72,12 @@ public partial class MainWindow : Window
 
     private void Button_Click(object sender, RoutedEventArgs e)
     {
+        if (_launcherFirstWasDragged)
+        {
+            _launcherFirstWasDragged = false;
+            return;
+        }
+
         Button_LauncherFirst.Visibility = Visibility.Collapsed;
         Button_LauncherSecond.Visibility = Visibility.Visible;
         dt.Start();
@@ -78,7 +85,8 @@ public partial class MainWindow : Window
 
     private void Button_LauncherFirst_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
-        _launcherFirstDragStart = e.GetPosition(Button_LauncherFirst);
+        _launcherFirstDragStart = e.GetPosition(this);
+        _launcherFirstWasDragged = false;
     }
 
     private void Button_LauncherFirst_PreviewMouseMove(object sender, MouseEventArgs e)
@@ -88,19 +96,36 @@ public partial class MainWindow : Window
             return;
         }
 
-        Point current = e.GetPosition(Button_LauncherFirst);
+        Point current = e.GetPosition(this);
         double deltaX = current.X - _launcherFirstDragStart.Value.X;
+        double deltaY = current.Y - _launcherFirstDragStart.Value.Y;
 
-        if (deltaX >= Button_LauncherFirst.ActualWidth)
+        if (!_launcherFirstWasDragged && (Math.Abs(deltaX) < DragThreshold && Math.Abs(deltaY) < DragThreshold))
         {
-            _launcherFirstDragStart = null;
-            this.Close();
+            return;
         }
+
+        if (!_launcherFirstWasDragged)
+        {
+            _launcherFirstWasDragged = true;
+            Button_LauncherFirst.CaptureMouse();
+        }
+
+        Button_LauncherFirstTranslate.X += deltaX;
+        Button_LauncherFirstTranslate.Y += deltaY;
+
+        _launcherFirstDragStart = current;
     }
 
     private void Button_LauncherFirst_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
     {
         _launcherFirstDragStart = null;
+
+        if (_launcherFirstWasDragged)
+        {
+            Button_LauncherFirst.ReleaseMouseCapture();
+            e.Handled = true;
+        }
     }
 
     private void Button_LauncherFirst_LostMouseCapture(object sender, MouseEventArgs e)

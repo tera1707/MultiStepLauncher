@@ -70,6 +70,9 @@
             <Button.Background>
                 <SolidColorBrush Color="#FFDDDDDD"/>
             </Button.Background>
+            <Button.RenderTransform>
+                <TranslateTransform x:Name="Button_LauncherFirstTranslate"/>
+            </Button.RenderTransform>
         </Button>
 
         <Button x:Name="Button_LauncherSecond" Grid.Row="5" Grid.Column="2" Content="Open Launcher 2"  Click="Button_Click_1" FontSize="35" Margin="10"/>
